@@ -12,5 +12,18 @@ Ejemplo 2: $a = 5; $b = 1; $c = 5; => se muestra un mensaje “No hay valor del 
 */
 
 
+$a = 6; $b = 9; $c = 8;
+#$a = 5; $b = 1; $c = 5;
+
+
+$arreglo = array($a, $b, $c);
+sort($arreglo);
+
+echo "El número medio entre $a, $b, y $c";
+
+if($a != $b && $a != $c && $b != $c)
+    echo "<br/> es: $arreglo[1]";
+else
+    echo "<br/> No hay valor medio";
 
 ?>
