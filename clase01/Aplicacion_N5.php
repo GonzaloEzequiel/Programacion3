@@ -11,7 +11,7 @@ Por ejemplo, si $num = 43 debe mostrarse por pantalla “cuarenta y tres”.
 */
 
 
-$num = 45;
+$num = 57;
 
 $decena = (int) ($num / 10); 
 $unidad = $num % 10;
@@ -33,45 +33,49 @@ switch($decena) {
         echo "Cincuenta";
         break;
     case 6:
-        echo "Sesenta";
+        if($unidad < 1)
+            echo "Sesenta";
         break;
     default:
         break;
 }
 
-if($decena != 2 && $unidad != 0)
+if($decena > 2 && $decena < 6) {
+
+    if($decena != 2 && $unidad != 0)
     echo " y ";
 
-switch($unidad) {
-    case 1:
-        echo "uno";
-        break;
-    case 2:
-        echo "dos";
-        break;
-    case 3:
-        echo "tres";
-        break;
-    case 4:
-        echo "cuatro";
-        break;
-    case 5:
-        echo "cinco";
-        break;
-    case 6:
-        echo "seis";
-        break;
-    case 7:
-        echo "siete";
-        break;
-    case 8:
-        echo "ocho";
-        break;
-    case 9:
-        echo "nueve";
-        break;
-    default:
-        break;
+    switch($unidad) {
+        case 1:
+            echo "uno";
+            break;
+        case 2:
+            echo "dos";
+            break;
+        case 3:
+            echo "tres";
+            break;
+        case 4:
+            echo "cuatro";
+            break;
+        case 5:
+            echo "cinco";
+            break;
+        case 6:
+            echo "seis";
+            break;
+        case 7:
+            echo "siete";
+            break;
+        case 8:
+            echo "ocho";
+            break;
+        case 9:
+            echo "nueve";
+            break;
+        default:
+            break;
+    }
 }
 
 ?>
