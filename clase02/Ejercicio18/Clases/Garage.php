@@ -60,7 +60,7 @@ class Garage {
      */
     public function Remove($auto) {
         if($this->Equals($auto)) {
-            $this->_autos = array_filter($this->_autos, function($a) use($auto) { return $a != $auto; });
+            $this->_autos = array_filter($this->_autos, function($autosGarage) use($auto) { return $autosGarage != $auto; });
             echo "Gracias vuelva pronto...\n\n";
         }
             
