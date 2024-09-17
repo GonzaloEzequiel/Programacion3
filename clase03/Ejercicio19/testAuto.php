@@ -15,16 +15,12 @@ Realizar un constructor capaz de poder instanciar objetos pasándole como parám
     ii. La marca, color y el precio.
     iii. La marca, color, precio y fecha.
 
-Realizar un método de instancia llamado “AgregarImpuestos”, que recibirá un doble por parámetro y que 
-se sumará al precio del objeto.
-Realizar un método de clase llamado “MostrarAuto”, que recibirá un objeto de tipo “Auto” por parámetro y que mostrará 
-todos los atributos de dicho objeto.
-Crear el método de instancia “Equals” que permita comparar dos objetos de tipo “Auto”. Sólo devolverá
-TRUE si ambos “Autos” son de la misma marca.
-Crear un método de clase, llamado “Add” que permita sumar dos objetos “Auto” (sólo si son de la misma marca, 
-y del mismo color, de lo contrario informarlo) y que retorne un Double con la suma de los
-precios o cero si no se pudo realizar la operación.
-Ejemplo: $importeDouble = Auto::Add($autoUno, $autoDos);
+Realizar un método de instancia llamado “AgregarImpuestos”, que recibirá un doble por parámetro y que se sumará al precio del objeto.
+Realizar un método de clase llamado “MostrarAuto”, que recibirá un objeto de tipo “Auto” por parámetro y que mostrará todos los atributos de dicho objeto.
+Crear el método de instancia “Equals” que permita comparar dos objetos de tipo “Auto”. Sólo devolverá TRUE si ambos “Autos” son de la misma marca.
+Crear un método de clase, llamado “Add” que permita sumar dos objetos “Auto” (sólo si son de la misma marca, y del mismo color, de lo contrario informarlo) 
+    y que retorne un Double con la suma de los precios o cero si no se pudo realizar la operación.
+    Ejemplo: $importeDouble = Auto::Add($autoUno, $autoDos);
 
 Crear un método de clase para poder hacer el alta de un Auto, guardando los datos en un archivo autos.csv.
 Hacer los métodos necesarios en la clase Auto para poder leer el listado desde el archivo autos.csv
@@ -47,3 +43,13 @@ require_once(__DIR__."/./Clases/Auto.php");
 echo "\n\n ----------- Ejercicio 19 ----------- \n\n";
 
 Automovil::AltaAuto($auto1);
+Automovil::AltaAuto($auto2);
+Automovil::AltaAuto($auto3);
+Automovil::AltaAuto($auto4);
+Automovil::AltaAuto($auto5);
+
+echo "\n\nAutos Leídos: \n";
+
+foreach(Automovil::LeerAutos() as $auto => $detalle) {
+    echo $detalle;
+}

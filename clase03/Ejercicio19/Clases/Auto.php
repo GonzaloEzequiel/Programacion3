@@ -3,18 +3,18 @@
 require_once(__DIR__."/../../../clase02/Ejercicio17/Clases/Auto.php");
 
 /*
-Crear un método de clase para poder hacer el alta de un Auto, guardando los datos en un archivo
-autos.csv.
-Hacer los métodos necesarios en la clase Auto para poder leer el listado desde el archivo
-autos.csv
+Crear un método de clase para poder hacer el alta de un Auto, guardando los datos en un archivo autos.csv.
+Hacer los métodos necesarios en la clase Auto para poder leer el listado desde el archivo autos.csv
 Se deben cargar los datos en un array de autos.
 */
 
 class Automovil extends Auto {
 
+    /**
+     * Agrega los atributos de un auto dado, al archivo csv.
+     */
     public static function AltaAuto($auto) {
 
-        $archivo;
         $caracteresEscritos = 0;
         $resultado = false;
     
@@ -26,7 +26,7 @@ class Automovil extends Auto {
         }
 
         $archivo = fopen(__DIR__."/../autos.csv", "a");
-        $caracteresEscritos = fwrite($auto->_marca.",".$auto->_color.",".$auto->_precio.",".$auto->_fecha);
+        $caracteresEscritos = fwrite($archivo, "\n".Automovil::DatosAutoACsv($auto));
     
         if($caracteresEscritos > 0) {
             $resultado = true;
@@ -35,26 +35,38 @@ class Automovil extends Auto {
         fclose($archivo);
     
         if($resultado)
-            echo "Auto dado de alta";
+            echo "Auto dado de alta\n";
         else
-            echo "Error al dar de alta el auto";
+            echo "Error al dar de alta el auto\n";
     
     }
     
     /**
      * Lee todos los autos del archivo autos.csv y los muestra.
      */
-    public static function leerAutos() {
-        $archivo = fopen("autos.csv", "r");
-        $arrayAutos = array();
+    public static function LeerAutos() {
+        $archivo = fopen(__DIR__."/../autos.csv", "r");
+        $arrayAutos = [];
     
-        while(!feof($archivo)) {
-            array_push($arrayAutos, fgetcsv($archivo, filesize("autos.csv")));
-        }    
+        while(!feof($archivo)) {            
+            array_push($arrayAutos, fgets($archivo));
+        }
     
         fclose($archivo);
     
         return $arrayAutos;
     }
 
+    /**
+     * Valida los atributos existentes del auto y los vuelca en una cadena con formato csv
+     */
+    public static function DatosAutoACsv($auto) {
+        $cadenaAEscribir = $auto->GetMarca().",".$auto->GetColor();
+        if(!is_null($auto->GetPrecio()))
+            $cadenaAEscribir = $cadenaAEscribir.",".$auto->GetPrecio();
+        if(!is_null($auto->GetFecha()))
+            $cadenaAEscribir = $cadenaAEscribir.",".$auto->GetFecha();
+
+        return $cadenaAEscribir;
+    }
 }

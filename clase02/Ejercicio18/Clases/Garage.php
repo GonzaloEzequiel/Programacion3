@@ -67,5 +67,15 @@ class Garage {
         else
             echo "El auto NO se encuentra en el garage\n";
     }
+
+
+    // funciones adicionales para ejercicio20
+
+    /**
+     *  GETTERs 
+     */
+    public function GetRazonSocial(){ return $this->_razonSocial; }
+    public function GetPrecioPorHora(){ return $this->_precioPorHora; }
+    public function GetAutos(){ return $this->_autos; }
     
 }

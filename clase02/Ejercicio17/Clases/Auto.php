@@ -7,6 +7,16 @@ class Auto {
     private $_marca;
     private $_fecha;
 
+    // funciones adicionales para ejercicio19
+
+    /**
+     *  GETTERs 
+     */
+    public function GetMarca(){ return $this->_marca; }
+    public function GetColor(){ return $this->_color; }
+    public function GetPrecio(){ return $this->_precio; }
+    public function GetFecha(){ return $this->_fecha; }
+
     public function __construct()
     {
         $parametros = func_get_args();
@@ -43,11 +53,12 @@ class Auto {
      * Muestra los datos existentes del auto
      */
     public static function MostrarAuto($auto) {        
-        echo "Marca: $auto->_marca | Color: $auto->_color";
-        if(!is_null($auto->_precio))
-            echo " | Precio: $$auto->_precio";
-        if(!is_null($auto->_fecha))
-            echo " | Fecha: $auto->_fecha";
+        echo "Marca: ".$auto->GetMarca();
+        echo " | Color: ".$auto->GetColor();
+        if(!is_null($auto->GetPrecio()))
+            echo " | Precio: $".$auto->GetPrecio();
+        if(!is_null($auto->GetFecha()))
+            echo " | Fecha: ".$auto->GetFecha();
         echo "\n";
     }
 
@@ -76,6 +87,6 @@ class Auto {
             echo "Los autos no son de la misma marca. "; 
         }
         return 0;             
-    }
+    }    
 
 }
