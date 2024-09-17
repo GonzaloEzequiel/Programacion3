@@ -44,7 +44,7 @@ class GaragePremium extends Garage {
         $arrayGarages = [];
     
         while(!feof($archivo)) {            
-            array_push($arrayGarages, fgets($archivo));
+            array_push($arrayGarages, fgetcsv($archivo, 0, ',', '"', "\n"));
         }
     
         fclose($archivo);

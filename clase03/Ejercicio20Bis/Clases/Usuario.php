@@ -63,8 +63,4 @@ class Usuario {
     
         return $arrayUsuarios;
     }
-
-    public static function ValidarUsuario() {
-        
-    }
 }

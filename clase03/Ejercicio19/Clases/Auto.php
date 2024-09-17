@@ -48,8 +48,8 @@ class Automovil extends Auto {
         $archivo = fopen(__DIR__."/../autos.csv", "r");
         $arrayAutos = [];
     
-        while(!feof($archivo)) {            
-            array_push($arrayAutos, fgets($archivo));
+        while(!feof($archivo)) {
+            array_push($arrayAutos, fgetcsv($archivo, 0, ',', '"', "\n"));
         }
     
         fclose($archivo);
