@@ -56,11 +56,15 @@ class Usuario {
         $arrayUsuarios = [];
     
         while(!feof($archivo)) {            
-            array_push($arrayUsuarios, fgets($archivo));
+            array_push($arrayUsuarios, fgetcsv($archivo, 0, ',', '"', "\n"));
         }
     
         fclose($archivo);
     
         return $arrayUsuarios;
+    }
+
+    public static function ValidarUsuario() {
+        
     }
 }
