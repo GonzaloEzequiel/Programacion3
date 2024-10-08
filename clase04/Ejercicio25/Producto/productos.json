@@ -1,0 +1,18 @@
+[
+    {
+        "codigoDeBarra": "001234",
+        "nombre": "Ayudin2",
+        "tipo": "Limpieza",
+        "stock": 3330,
+        "precio": "500",
+        "id": 5572
+    },
+    {
+        "codigoDeBarra": "012345",
+        "nombre": "Ayudin2",
+        "tipo": "Limpieza",
+        "stock": 666,
+        "precio": "500",
+        "id": 3933
+    }
+]

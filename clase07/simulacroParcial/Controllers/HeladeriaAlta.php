@@ -33,32 +33,41 @@ if(
 
 }
 
-
-
 function AltaHelado($helado) {
 
-    $caracteresEscritos = 0;
-    $resultado = false;
-
-    if(!file_exists(__DIR__."/../autos.csv")) {
-
-        $archivo = fopen(__DIR__."/../autos.csv", "w");        
-        $caracteresEscritos = fwrite($archivo, "marca,color,precio,fecha");
+    $ubicacion = __DIR__."/../Producto/productos.json";
+    $operacion = 0;
+    
+    if(!file_exists($ubicacion)) {
+        
+        $archivo = fopen($ubicacion, "w");
         fclose($archivo);
     }
 
-    $archivo = fopen(__DIR__."/../autos.csv", "a");
-    $caracteresEscritos = fwrite($archivo, "\n".Automovil::DatosAutoACsv($auto));
+    if(!ConsultaHelado::ValidarExistencia($producto, $listaProductos)) {
 
-    if($caracteresEscritos > 0) {
+        array_push($listaProductos, get_object_vars($producto));
+        $operacion = 1;
+
+    } else {
+
+        $operacion = 2;
+    }
+
+    //var_dump($listaProductos);
+    
+    $jsonDatos = json_encode($listaProductos, JSON_PRETTY_PRINT); 
+    
+    if(file_put_contents($ubicacion, $jsonDatos) > 0) {
         $resultado = true;
-    }     
-
-    fclose($archivo);
+    }
 
     if($resultado)
-        echo "Auto dado de alta\n";
+        if($operacion == 1)
+            echo "Ingresado\n";
+        else if($operacion == 2)
+            echo "Actualizado\n";
     else
-        echo "Error al dar de alta el auto\n";
+        echo "No se pudo hacer\n";
 
 }

@@ -10,7 +10,9 @@ A- (1 pt.) index.php: Recibe todas las peticiones que realiza el postman, y admi
 require_once __DIR__."/../Controllers/HeladeriaAlta.php";
 
 if(isset($_GET['accion'])){
+
     switch($_SERVER['REQUEST_METHOD']){
+
         case 'GET':
             switch ($_GET['accion']){
                 case 'sesion':
@@ -27,6 +29,7 @@ if(isset($_GET['accion'])){
                     break;
             }
             break;
+
         case 'POST':
             switch ($_GET['accion']){
                 case 'archivo':
@@ -37,9 +40,17 @@ if(isset($_GET['accion'])){
                     break;
             }
             break;
-        default:
-            echo 'Verbo no permitido';
+        
+
+        case 'PUT':
             break;
+
+        case 'DELETE':
+            break;
+
+        default:
+        echo 'Verbo no permitido';
+        break;
     }
 } else {
     echo 'Parámetro "accion" no enviado';
